@@ -17,7 +17,16 @@
             text-align: center;
             overflow: hidden; /* Prevent scrollbars during animation */
         }
-        h1, h2 {
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Space between the header and the iFrame */
+        }
+        .header img {
+            height: 50px; /* Adjust as needed */
+            margin-right: 15px; /* Space between the logo and text */
+        }
+        .header h1, .header h2 {
             margin: 0;
             color: #333;
             border-radius: 10px;
@@ -33,7 +42,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             animation: expandAnimation 3s ease-out forwards;
         }
-
         @keyframes expandAnimation {
             0% {
                 width: 0;
@@ -54,8 +62,13 @@
     </style>
 </head>
 <body>
-    <h1>Pablo TV/7 MAD</h1>
-    <h2>Canal 1</h2>
+    <div class="header">
+        <img src="logo.png" alt="Logo">
+        <div>
+            <h1>Pablo TV/7 MAD</h1>
+            <h2>Canal 1</h2>
+        </div>
+    </div>
     <iframe
         src="https://player.twitch.tv/?channel=danucosuko&parent=flippantefl.github.io"
         allowfullscreen>
