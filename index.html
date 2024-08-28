@@ -13,33 +13,38 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #f6f6f6, #eaeaea); /* Subtle gradient background */
             text-align: center;
             overflow: hidden; /* Prevent scrollbars during animation */
         }
         .header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px; /* Space between the header and the iFrame */
+            margin-bottom: 30px; /* Space between the header and the iFrame */
         }
         .header img {
-            height: 50px; /* Adjust as needed */
-            margin-right: 15px; /* Space between the logo and text */
+            height: 60px; /* Adjust as needed */
+            margin-right: 20px; /* Space between the logo and text */
+            border-radius: 50%; /* Circular logo */
+            border: 2px solid #ddd; /* Subtle border */
+            padding: 5px; /* Padding around the image */
+            background: #fff; /* Background for logo */
         }
         .header h1, .header h2 {
             margin: 0;
             color: #333;
-            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
         }
         iframe {
-            height: 5px; /* Initial height */
+            height: 400px; /* Fixed height */
             width: 5px; /* Initial width */
             border: none;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
             animation: expandAnimation 5s ease-out forwards;
         }
         @keyframes expandAnimation {
