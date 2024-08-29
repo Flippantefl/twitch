@@ -123,11 +123,12 @@
     </div>
     <div class="container">
         <div class="buttons">
-            <button onclick="moveContent()">Canal 2</button>
+            <button id="channelButton" onclick="toggleChannel()">Canal 2</button>
         </div>
         <div class="content" id="content">
-            <h2>Canal 1</h2>
+            <h2 id="channelLabel">Canal 1</h2>
             <iframe
+                id="streamFrame"
                 src="https://player.twitch.tv/?channel=danucosuko&parent=flippantefl.github.io"
                 allowfullscreen>
             </iframe>
@@ -135,9 +136,34 @@
     </div>
 
     <script>
-        function moveContent() {
+        let isChannel1 = true;
+
+        function toggleChannel() {
             const content = document.getElementById('content');
+            const button = document.getElementById('channelButton');
+            const channelLabel = document.getElementById('channelLabel');
+            const iframe = document.getElementById('streamFrame');
+
             content.style.animation = 'slideOutAnimation 2s forwards ease-out';
+
+            setTimeout(() => {
+                // Toggle between channels
+                if (isChannel1) {
+                    channelLabel.textContent = 'Canal 2';
+                    button.textContent = 'Canal 1';
+                } else {
+                    channelLabel.textContent = 'Canal 1';
+                    button.textContent = 'Canal 2';
+                }
+
+                isChannel1 = !isChannel1;
+
+                // Reload the iframe with the same stream (or change to a different stream if available)
+                iframe.src = "https://player.twitch.tv/?channel=danucosuko&parent=flippantefl.github.io";
+
+                // Reset animation
+                content.style.animation = '';
+            }, 2000); // Wait for the slide-out animation to complete
         }
     </script>
 </body>
