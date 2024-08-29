@@ -13,39 +13,79 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f6f6f6, #eaeaea); /* Subtle gradient background */
+            background: linear-gradient(135deg, #f6f6f6, #eaeaea);
             text-align: center;
-            overflow: hidden; /* Prevent scrollbars during animation */
+            overflow: hidden;
         }
         .header {
             display: flex;
             align-items: center;
-            margin-bottom: 30px; /* Space between the header and the iFrame */
+            margin-bottom: 30px;
         }
         .header img {
-            height: 60px; /* Adjust as needed */
-            margin-right: 20px; /* Space between the logo and text */
-            border-radius: 50%; /* Circular logo */
-            border: 2px solid #ddd; /* Subtle border */
-            padding: 5px; /* Padding around the image */
-            background: #fff; /* Background for logo */
+            height: 60px;
+            margin-right: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            padding: 5px;
+            background: #fff;
         }
-        .header h1, .header h2 {
+        .header h1 {
             margin: 0;
             color: #333;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            position: relative;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background: #555;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: expandAnimation 5s ease-out forwards;
         }
         iframe {
-            height: 400px; /* Fixed height */
-            width: 5px; /* Initial width */
+            height: 400px;
+            width: 600px;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
-            animation: expandAnimation 5s ease-out forwards;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            margin: 10px 0;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         @keyframes expandAnimation {
             0% {
@@ -64,19 +104,41 @@
                 opacity: 1;
             }
         }
+        @keyframes slideOutAnimation {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="logo.png" alt="Logo">
-        <div>
-            <h1>Pablo TV/7 MAD</h1>
+        <h1>Pablo TV/7 MAD</h1>
+    </div>
+    <div class="container">
+        <div class="buttons">
+            <button onclick="moveContent()">Canal 2</button>
+        </div>
+        <div class="content" id="content">
             <h2>Canal 1</h2>
+            <iframe
+                src="https://player.twitch.tv/?channel=danucosuko&parent=flippantefl.github.io"
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
-    <iframe
-        src="https://player.twitch.tv/?channel=danucosuko&parent=flippantefl.github.io"
-        allowfullscreen>
-    </iframe>
+
+    <script>
+        function moveContent() {
+            const content = document.getElementById('content');
+            content.style.animation = 'slideOutAnimation 2s forwards ease-out';
+        }
+    </script>
 </body>
 </html>
